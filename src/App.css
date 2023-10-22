@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+.header-background-light {
+  z-index: 1;
+  width: 100%;
+  height: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-background-light::after {
+  content: "";
+  /* Adiciona um pseudo-elemento para a animação de fundo */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(75deg, rgb(4, 29, 40), rgb(56, 104, 125), rgb(112, 124, 184), rgb(111, 178, 109), rgb(4, 108, 132), rgb(233, 156, 125), rgb(185, 41, 91), rgb(62, 0, 22));
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header-background-dark {
+  z-index: 1;
+  width: 100%;
+  height: auto;
+}
+
+.header-background-dark::after {
+  content: "";
+  /* Adiciona um pseudo-elemento para a animação de fundo */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(75deg, rgb(63, 14, 14), rgb(157, 0, 0), rgb(35, 22, 92), rgb(55, 0, 86), rgb(0, 5, 81), rgb(23, 86, 115), rgb(28, 26, 26), rgb(0, 0, 0));
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0% 50%;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  50% {
+    background-position: 100% 50%;
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    background-position: 0% 50%;
   }
 }
