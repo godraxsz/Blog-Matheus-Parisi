@@ -15,6 +15,7 @@ import { usePage } from '../../util/PageToggler';
 // Imagens
 import lightIco from "../../images/favicons/light.ico";
 import darkIco from "../../images/favicons/dark.ico";
+import HeadingLogin from '../pages/login/headings/headingLogin';
 
 // Estilos
 const buttonLight = { backgroundColor: 'white', border: '2px solid black', color: 'black', transition: 'background - color 0.3s, border - color 0.3s, color 0.3s', };
@@ -28,7 +29,8 @@ const headingComponents = {
     //projetos: <PageProjetos />,
     //sobre: <PageSobre />,
     //blog: <PageBlog />,
-    //login: <PageLogin />,
+    login: <HeadingLogin />,
+    registro: <HeadingLogin />,
 };
 
 const TopNavMobile = ({ children, Media }) => {
@@ -59,24 +61,25 @@ const TopNavMobile = ({ children, Media }) => {
                     vertical
                     visible={sidebarOpened}
                 >
-                    <Menu.Item onClick={() => togglePage('inicio')} style={isDarkMode ? { border: '1px solid #454545', borderTop: '0px' } : { border: '1px solid #d6d6d6', borderTop: '0px' }}><Image src={isDarkMode ? darkIco : lightIco} size="mini"></Image></Menu.Item>
-                    <Menu.Item onClick={() => togglePage('inicio')} inverted={isDarkMode} as='a' active={page === 'inicio' ? true : false}>Início</Menu.Item>
-                    <Menu.Item onClick={() => togglePage('projetos')} inverted={isDarkMode} as='a' active={page === 'projetos' ? true : false}>Projetos</Menu.Item>
-                    <Menu.Item onClick={() => togglePage('sobre')} inverted={isDarkMode} as='a' active={page === 'sobre' ? true : false}>Sobre mim</Menu.Item>
-                    <Menu.Item onClick={() => togglePage('blog')} inverted={isDarkMode} as='a' active={page === 'blog' ? true : false}>Blog</Menu.Item>
-                    <Menu.Item onClick={() => togglePage('login')} inverted={isDarkMode} as='a' active={page === 'login' ? true : false}>Login</Menu.Item>
+                    <Menu.Item onClick={() => togglePage('inicio')} style={isDarkMode ? { borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }}><Image src={isDarkMode ? darkIco : lightIco} size="mini"></Image></Menu.Item>
+                    <Menu.Item onClick={() => togglePage('inicio')} as='a' active={page === 'inicio' ? true : false}>Início</Menu.Item>
+                    <Menu.Item onClick={() => togglePage('projetos')} as='a' active={page === 'projetos' ? true : false}>Projetos</Menu.Item>
+                    <Menu.Item onClick={() => togglePage('sobre')} as='a' active={page === 'sobre' ? true : false}>Sobre mim</Menu.Item>
+                    <Menu.Item onClick={() => togglePage('blog')} as='a' active={page === 'blog' ? true : false}>Blog</Menu.Item>
+                    <Menu.Item onClick={() => togglePage('login')} as='a' active={page === 'login' ? true : false}>Login</Menu.Item>
                 </Sidebar>
 
                 <Sidebar.Pusher dimmed={sidebarOpened}>
-                    <Segment className={isDarkMode ? "header-background-dark" : "header-background-light"} textAlign='center' style={{ height: headingComponents[page] ? 'auto' : '100vh', minHeight: 350, padding: '1em 0em', border: 'none', boxShadow: 'none', borderRadius: 0 }} vertical>
+                    <Segment className={isDarkMode ? "header-background-dark" : "header-background-light"} textAlign='center' style={{ minHeight: !headingComponents[page] || page === "login" || page === "registro" ? '100vh' : 'auto', padding: '1em 0em', border: 'none', boxShadow: 'none', borderRadius: 0 }} vertical>
                         <Container>
                             <Menu style={isDarkMode ? { backgroundColor: '#121212', color: 'white', borderBottom: '1px solid white', borderTop: '1px solid white' } : { backgroundColor: '#ebebeb', color: 'black', borderBottom: '1px solid black', borderTop: '1px solid black' }} size='large'>
-                                <Menu.Item style={isDarkMode ? { border: '1px solid #454545', borderTop: '0px', color: 'white' } : { border: '1px solid #d6d6d6', borderTop: '0px', color: 'black' }} onClick={handleToggle}>
+                                <Menu.Item style={isDarkMode ? { borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px', color: 'white' } : { borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px', color: 'black' }} onClick={handleToggle}>
                                     <Icon name='sidebar' />
                                 </Menu.Item>
-                                <Menu.Item style={isDarkMode ? { border: '1px solid #454545', borderTop: '0px' } : { border: '1px solid #d6d6d6', borderTop: '0px' }} position='right'>
+                                <Menu.Item style={isDarkMode ? { borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} position='right'>
                                     <Button
                                         as='a'
+                                        onClick={() => togglePage('login')}
                                         style={isDarkMode ? buttonDark : buttonLight}
                                         onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                                         onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}

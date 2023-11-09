@@ -6,7 +6,7 @@
     "linkedin": "https://www.linkedin.com/in/matheusparisi/"
   },
   "name": "blog-matheus-parisi",
-  "version": "0.1.1",
+  "version": "v0.1.2",
   "private": true,
   "dependencies": {
     "@artsy/fresnel": "^6.2.1",

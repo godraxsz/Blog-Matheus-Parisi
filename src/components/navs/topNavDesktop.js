@@ -16,6 +16,7 @@ import { usePage } from '../../util/PageToggler';
 // Imagens
 import lightIco from "../../images/favicons/light.ico";
 import darkIco from "../../images/favicons/dark.ico";
+import HeadingLogin from '../pages/login/headings/headingLogin';
 
 // Estilos
 const setTopMenuLight = (e) => { e.currentTarget.style.backgroundColor = ''; };
@@ -33,7 +34,8 @@ const headingComponents = {
     //projetos: <PageProjetos />,
     //sobre: <PageSobre />,
     //blog: <PageBlog />,
-    //login: <PageLogin />,
+    login: <HeadingLogin />,
+    registro: <HeadingLogin />,
 };
 
 const TopNavDesktop = ({ children, Media }) => {
@@ -51,17 +53,18 @@ const TopNavDesktop = ({ children, Media }) => {
     return (
         <Media greaterThan='mobile'>
             <InView onChange={toggleFixedMenu}>
-                <Segment className={isDarkMode ? "header-background-dark" : "header-background-light"} style={{ height: headingComponents[page] ? 'auto' : '100vh', boxShadow: 'none', borderRadius: 0 }} textAlign='center' vertical>
+                <Segment className={isDarkMode ? "header-background-dark" : "header-background-light"} style={{ minHeight: !headingComponents[page] || page === "login" || page === "registro" ? '100vh' : 'auto', boxShadow: 'none', borderRadius: 0 }} textAlign='center' vertical>
                     <Menu fixed={fixed ? 'top' : null} style={isDarkMode ? { backgroundColor: '#121212', color: 'white', borderBottom: '1px solid white', borderTop: '1px solid white' } : { backgroundColor: '#ebebeb', color: 'black', borderBottom: '1px solid black', borderTop: '1px solid black' }} pointing={false} secondary={false} size='large'>
                         <Container>
-                            <Menu.Item onClick={() => togglePage('inicio')} onMouseEnter={isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { border: '1px solid #454545', borderTop: '0px' } : { border: '1px solid #d6d6d6', borderTop: '0px' }}><Image src={isDarkMode ? darkIco : lightIco} size="mini"></Image></Menu.Item>
-                            <Menu.Item onClick={() => togglePage('inicio')} onMouseEnter={page === 'inicio' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'inicio' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'inicio' ? '#353535' : '', border: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'inicio' ? '#dfdfdf' : '', border: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Início</Menu.Item>
-                            <Menu.Item onClick={() => togglePage('projetos')} onMouseEnter={page === 'projetos' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'projetos' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'projetos' ? '#353535' : '', border: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'projetos' ? '#dfdfdf' : '', border: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Projetos</Menu.Item>
-                            <Menu.Item onClick={() => togglePage('sobre')} onMouseEnter={page === 'sobre' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'sobre' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'sobre' ? '#353535' : '', border: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'sobre' ? '#dfdfdf' : '', border: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Sobre mim</Menu.Item>
-                            <Menu.Item onClick={() => togglePage('blog')} onMouseEnter={page === 'blog' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'blog' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'blog' ? '#353535' : '', border: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'blog' ? '#dfdfdf' : '', border: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Blog</Menu.Item>
-                            <Menu.Item style={isDarkMode ? { border: '1px solid #454545', borderTop: '0px' } : { border: '1px solid #d6d6d6', borderTop: '0px' }} position='right'>
+                            <Menu.Item onClick={() => togglePage('inicio')} onMouseEnter={isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }}><Image src={isDarkMode ? darkIco : lightIco} size="mini"></Image></Menu.Item>
+                            <Menu.Item onClick={() => togglePage('inicio')} onMouseEnter={page === 'inicio' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'inicio' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'inicio' ? '#353535' : '', borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'inicio' ? '#dfdfdf' : '', borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Início</Menu.Item>
+                            <Menu.Item onClick={() => togglePage('projetos')} onMouseEnter={page === 'projetos' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'projetos' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'projetos' ? '#353535' : '', borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'projetos' ? '#dfdfdf' : '', borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Projetos</Menu.Item>
+                            <Menu.Item onClick={() => togglePage('sobre')} onMouseEnter={page === 'sobre' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'sobre' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'sobre' ? '#353535' : '', borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'sobre' ? '#dfdfdf' : '', borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Sobre mim</Menu.Item>
+                            <Menu.Item onClick={() => togglePage('blog')} onMouseEnter={page === 'blog' ? null : isDarkMode ? setTopMenuHoverDark : setTopMenuHoverLight} onMouseLeave={page === 'blog' ? null : isDarkMode ? setTopMenuDark : setTopMenuLight} style={isDarkMode ? { color: 'white', backgroundColor: page === 'blog' ? '#353535' : '', borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { color: 'black', backgroundColor: page === 'blog' ? '#dfdfdf' : '', borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} as='a'>Blog</Menu.Item>
+                            <Menu.Item style={isDarkMode ? { borderLeft: '1px solid #454545', borderRight: '1px solid #454545', borderBottom: '1px solid #454545', borderTop: '0px' } : { borderLeft: '1px solid #d6d6d6', borderRight: '1px solid #d6d6d6', borderBottom: '1px solid #d6d6d6', borderTop: '0px' }} position='right'>
                                 <Button
                                     as='a'
+                                    onClick={() => togglePage('login')}
                                     style={isDarkMode ? buttonDark : buttonLight}
                                     onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                                     onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}
