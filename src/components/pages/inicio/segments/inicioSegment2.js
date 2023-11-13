@@ -1,9 +1,11 @@
 // Bibliotecas
 import React from 'react'
 import { Button, Grid, Header, Image, Segment, Container, Divider } from 'semantic-ui-react'
+import Tilt from 'react-parallax-tilt';
 
 // Util
 import { useDarkMode } from '../../../../util/DarkModeToggler';
+import { usePage } from '../../../../util/PageToggler';
 
 // Imagens
 import blogPicture from "../../../../images/misc/blog.png";
@@ -18,6 +20,7 @@ const setButtonDark = (e) => { e.currentTarget.style.backgroundColor = 'black'; 
 const InicioSegment2 = () => {
 
     const { isDarkMode } = useDarkMode();
+    const { togglePage } = usePage();
 
     return (
 
@@ -26,7 +29,9 @@ const InicioSegment2 = () => {
             <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>
                     <Grid.Column style={{ paddingBottom: '0em', paddingTop: '5em' }}>
-                        <Image rounded size='huge' src={blogPicture} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        <Tilt tiltReverse>
+                            <Image rounded size='huge' src={blogPicture} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        </Tilt>
                         <Header inverted={isDarkMode} as='h3' style={{ fontSize: '2em' }}>
                             "Utilizando tecnologia para proporcionar boas experiências"
                         </Header>
@@ -37,6 +42,7 @@ const InicioSegment2 = () => {
                             as='a'
                             size='large'
                             style={isDarkMode ? buttonDark : buttonLight}
+                            onClick={() => togglePage('blog')}
                             onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                             onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}
                         >
@@ -44,7 +50,9 @@ const InicioSegment2 = () => {
                         </Button>
                     </Grid.Column>
                     <Grid.Column style={{ paddingBottom: '5em', paddingTop: '10em' }}>
-                        <Image rounded size='big' src={projectsPicture} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        <Tilt tiltReverse>
+                            <Image rounded size='big' src={projectsPicture} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        </Tilt>
                         <Header inverted={isDarkMode} as='h3' style={{ fontSize: '2em' }}>
                             Explorando projetos
                         </Header>
@@ -55,6 +63,7 @@ const InicioSegment2 = () => {
                             as='a'
                             size='large'
                             style={isDarkMode ? buttonDark : buttonLight}
+                            onClick={() => togglePage('projetos')}
                             onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                             onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}
                         >
@@ -84,6 +93,7 @@ const InicioSegment2 = () => {
                     as='a'
                     size='large'
                     style={isDarkMode ? buttonDark : buttonLight}
+                    onClick={() => togglePage('blog')}
                     onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                     onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}
                 >

@@ -9,6 +9,7 @@ import TopNavMobile from './components/navs/topNavMobile';
 
 // Páginas
 import PageInicio from './components/pages/inicio/pageInicio';
+import PageSobre from './components/pages/sobre/pageSobre';
 
 // Util
 import { usePage } from './util/PageToggler';
@@ -45,18 +46,18 @@ ResponsiveContainer.propTypes = {
 }
 
 const HomepageLayout = () => {
-  
+
   const { page } = usePage();
 
   // Mapeamento de páginas
   const pageComponents = {
     inicio: <PageInicio />,
+    sobre: <PageSobre />,
     //projetos: <PageProjetos />,
-    //sobre: <PageSobre />,
     //blog: <PageBlog />,
     //login: <PageLogin />,
   };
-  
+
   const currentPage = pageComponents[page] || null;
 
   return <ResponsiveContainer>{currentPage}</ResponsiveContainer>;

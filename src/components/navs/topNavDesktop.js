@@ -17,6 +17,7 @@ import { usePage } from '../../util/PageToggler';
 import lightIco from "../../images/favicons/light.ico";
 import darkIco from "../../images/favicons/dark.ico";
 import HeadingLogin from '../pages/login/headings/headingLogin';
+import HeadingSobre from '../pages/sobre/headings/headingSobre';
 
 // Estilos
 const setTopMenuLight = (e) => { e.currentTarget.style.backgroundColor = ''; };
@@ -32,7 +33,7 @@ const setButtonDark = (e) => { e.currentTarget.style.backgroundColor = 'black'; 
 const headingComponents = {
     inicio: <HeadingInicio />,
     //projetos: <PageProjetos />,
-    //sobre: <PageSobre />,
+    sobre: <HeadingSobre />,
     //blog: <PageBlog />,
     login: <HeadingLogin />,
     registro: <HeadingLogin />,

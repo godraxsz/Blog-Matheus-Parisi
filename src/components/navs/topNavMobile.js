@@ -16,6 +16,7 @@ import { usePage } from '../../util/PageToggler';
 import lightIco from "../../images/favicons/light.ico";
 import darkIco from "../../images/favicons/dark.ico";
 import HeadingLogin from '../pages/login/headings/headingLogin';
+import HeadingSobre from '../pages/sobre/headings/headingSobre';
 
 // Estilos
 const buttonLight = { backgroundColor: 'white', border: '2px solid black', color: 'black', transition: 'background - color 0.3s, border - color 0.3s, color 0.3s', };
@@ -27,10 +28,10 @@ const setButtonDark = (e) => { e.currentTarget.style.backgroundColor = 'black'; 
 const headingComponents = {
     inicio: <HeadingInicio mobile={true} />,
     //projetos: <PageProjetos />,
-    //sobre: <PageSobre />,
+    sobre: <HeadingSobre mobile={true}/>,
     //blog: <PageBlog />,
-    login: <HeadingLogin />,
-    registro: <HeadingLogin />,
+    login: <HeadingLogin mobile={true}/>,
+    registro: <HeadingLogin mobile={true}/>,
 };
 
 const TopNavMobile = ({ children, Media }) => {

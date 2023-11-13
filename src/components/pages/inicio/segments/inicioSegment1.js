@@ -1,12 +1,14 @@
 // Bibliotecas
 import React from 'react'
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react'
+import Tilt from 'react-parallax-tilt';
 
 // Util
 import { useDarkMode } from '../../../../util/DarkModeToggler';
 
 // Imagens
 import profileInfo from "../../../../images/misc/info.png";
+import { usePage } from '../../../../util/PageToggler';
 
 // Estilos
 const buttonLight = { backgroundColor: 'white', border: '2px solid black', color: 'black', transition: 'background - color 0.3s, border - color 0.3s, color 0.3s', };
@@ -17,6 +19,7 @@ const setButtonDark = (e) => { e.currentTarget.style.backgroundColor = 'black'; 
 const InicioSegment1 = () => {
 
     const { isDarkMode } = useDarkMode();
+    const { togglePage } = usePage();
 
     return (
 
@@ -38,7 +41,14 @@ const InicioSegment1 = () => {
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
-                        <Image rounded size='large' src={profileInfo} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        <Tilt
+                            inverted={false}
+                            perspective={900}
+                            scale={1.1}
+                            transitionSpeed={2000}
+                        >
+                            <Image rounded size='large' src={profileInfo} style={isDarkMode ? { margin: '0 auto', display: 'block', border: '2px solid white' } : { margin: '0 auto', display: 'block', border: '2px solid black' }} />
+                        </Tilt>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
@@ -47,6 +57,7 @@ const InicioSegment1 = () => {
                             as='a'
                             size='huge'
                             style={isDarkMode ? buttonDark : buttonLight}
+                            onClick={() => togglePage('sobre')}
                             onMouseEnter={isDarkMode ? setButtonLight : setButtonDark}
                             onMouseLeave={isDarkMode ? setButtonDark : setButtonLight}
                         >

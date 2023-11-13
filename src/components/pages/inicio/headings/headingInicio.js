@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Image, Header } from 'semantic-ui-react'
+import Tilt from 'react-parallax-tilt';
 
 // Imagens
 import profilePicture from "../../../../images/avatar/large/profile.png";
@@ -10,28 +11,32 @@ import helloImg from "../../../../images/misc/hello.gif";
 const HeadingInicio = ({ mobile }) => {
 
     return (
+
         <Container
             text
         >
+            <Tilt tiltReverse>
 
-            <Image
-                circular
-                src={profilePicture}
-                size='medium'
-                style={{
-                    margin: '0 auto',
-                    display: 'block',
-                    marginBottom: 0,
-                    marginTop: mobile ? '1.5em' : '3em',
-                    border: '5px solid white',
-                }}
-            />
+                <Image
+                    circular
+                    src={profilePicture}
+                    size='medium'
+                    style={{
+                        margin: '0 auto',
+                        display: 'block',
+                        marginBottom: 0,
+                        marginTop: mobile ? '1.5em' : '3em',
+                        border: '5px solid white',
+                    }}
+                />
+
+            </Tilt>
 
             <div style={{ justifyContent: 'center', textAlign: 'center', alignItems: 'center', display: 'flex', flexDirection: 'row', marginTop: 20 }}>
 
+
                 <div>
                     <Header
-
                         as='h1'
                         content='Olá'
                         style={{
@@ -69,7 +74,7 @@ const HeadingInicio = ({ mobile }) => {
                 }}
             />
 
-        </Container>
+        </Container >
     )
 
 }
