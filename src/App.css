@@ -6,7 +6,6 @@
 
 .header-background-light::after {
   content: "";
-  /* Adiciona um pseudo-elemento para a animação de fundo */
   position: absolute;
   top: 0;
   right: 0;
@@ -26,7 +25,6 @@
 
 .header-background-dark::after {
   content: "";
-  /* Adiciona um pseudo-elemento para a animação de fundo */
   position: absolute;
   top: 0;
   right: 0;

@@ -39,7 +39,7 @@ const HeadingNotFound = ({ mobile }) => {
 
             <Header
                 as='h2'
-                content='Você tentou acessar uma página que não existente'
+                content='Você tentou acessar uma página que não existe'
                 style={{
                     fontSize: mobile ? '1.5em' : '1.7em',
                     fontWeight: 'normal',

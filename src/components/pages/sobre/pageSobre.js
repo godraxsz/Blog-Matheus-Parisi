@@ -9,7 +9,6 @@ import { useDarkMode } from '../../../util/DarkModeToggler';
 import BottomFooter from '../../footers/bottomFooter';
 import SobreSegment1 from './segments/sobreSegment1';
 import SobreSegment2 from './segments/sobreSegment2';
-//import SobreSegment2 from './segments/sobreSegment2';
 
 const PageSobre = () => {
 
