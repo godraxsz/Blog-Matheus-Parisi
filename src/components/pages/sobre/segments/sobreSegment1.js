@@ -15,8 +15,28 @@ const SobreSegment1 = () => {
 
     return (
 
-        <Segment inverted={isDarkMode} style={{ padding: '4em 0em', border: 'none', boxShadow: 'none', borderRadius: 0 }} vertical>
-            <Grid stackable inverted={isDarkMode} container>
+        <Segment inverted={isDarkMode} style={{ padding: '3em 0em', border: 'none', boxShadow: 'none', borderRadius: 0 }} vertical>
+
+            <Grid centered stackable inverted={isDarkMode} container>
+                <Grid.Row>
+                    <div style={{ justifyContent: 'center', textAlign: 'center', alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
+
+                        <div>
+                            <Header
+                                as='h2'
+                                content='Matheus Parisi'
+                                inverted={isDarkMode}
+                                style={{
+                                    fontSize: '3em',
+                                    fontWeight: 'normal',
+                                }}
+                            >
+                            </Header>
+
+                        </div>
+
+                    </div>
+                </Grid.Row>
                 <Grid.Row>
                     <Grid.Column width={5}>
                         <Tilt

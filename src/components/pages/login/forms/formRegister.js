@@ -36,8 +36,8 @@ const FormRegister = ({ mobile }) => {
     function validarInputs(email, senha, firstName, lastName) {
         const emailValido = emailValidoFunction(email);
         const senhaValida = senha.length >= 6;
-        const nomeValido = firstName.length >= 2 && firstName.length <= 15;
-        const sobrenomeValido = lastName.length >= 2 && lastName.length <= 15;
+        const nomeValido = firstName.length >= 2 && firstName.length <= 20;
+        const sobrenomeValido = lastName.length >= 2 && lastName.length <= 20;
         setIsEmailValid(emailValido);
         setIsPasswordValid(senhaValida);
         setIsFirstNameValid(nomeValido);
@@ -89,28 +89,28 @@ const FormRegister = ({ mobile }) => {
                 <Segment stacked>
 
                     <Form.Input
-                        maxLength={15}
+                        maxLength={20}
                         fluid
                         icon='quote left'
                         iconPosition='left'
                         placeholder='Nome'
                         value={firstName}
                         onChange={(e) => {
-                            setFirstName(e.target.value.replace(/[^a-zA-Z']/g, ''));
-                            validarInputs(email, password, e.target.value.replace(/[^a-zA-Z']/g, ''), lastName);
+                            setFirstName(e.target.value.replace(/[^a-zA-Z\s']/g, ''));
+                            validarInputs(email, password, e.target.value.replace(/[^a-zA-Z\s']/g, ''), lastName);
                         }}
                     />
 
                     <Form.Input
-                        maxLength={15}
+                        maxLength={20}
                         fluid
                         icon='quote right'
                         iconPosition='left'
                         placeholder='Sobrenome'
                         value={lastName}
                         onChange={(e) => {
-                            setLastName(e.target.value.replace(/[^a-zA-Z']/g, ''));
-                            validarInputs(email, password, firstName, e.target.value.replace(/[^a-zA-Z']/g, ''));
+                            setLastName(e.target.value.replace(/[^a-zA-Z\s']/g, ''));
+                            validarInputs(email, password, firstName, e.target.value.replace(/[^a-zA-Z\s']/g, ''));
                         }}
                     />
 

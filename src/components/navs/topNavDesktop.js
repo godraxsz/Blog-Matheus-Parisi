@@ -8,17 +8,17 @@ import { Button, Container, Image, Menu, Segment, Dropdown, Icon } from 'semanti
 // Componentes
 import HeadingInicio from '../pages/inicio/headings/headingInicio'
 import HeadingNotFound from '../pages/notFound/headings/headingNotFound';
+import HeadingLogin from '../pages/login/headings/headingLogin';
+import HeadingEmpty from '../pages/notFound/headings/headingEmpty';
 
 // Util
 import { useDarkMode } from '../../util/DarkModeToggler';
 import { usePage } from '../../util/PageToggler';
+import { useAuthCheck } from '../../firebase/AuthCheck';
 
 // Imagens
 import lightIco from "../../images/favicons/light.ico";
 import darkIco from "../../images/favicons/dark.ico";
-import HeadingLogin from '../pages/login/headings/headingLogin';
-import HeadingSobre from '../pages/sobre/headings/headingSobre';
-import { useAuthCheck } from '../../firebase/AuthCheck';
 import userIco from "../../images/login/user.png";
 
 // Estilos
@@ -41,9 +41,10 @@ const setDropdownHoverDark = (e) => { e.currentTarget.style.backgroundColor = '#
 const headingComponents = {
     inicio: <HeadingInicio />,
     //projetos: <PageProjetos />,
-    sobre: <HeadingSobre />,
-    //blog: <PageBlog />,
+    sobre: <HeadingEmpty />,
     login: <HeadingLogin />,
+    blog: <HeadingEmpty />,
+    admin: <HeadingEmpty />,
     registro: <HeadingLogin />,
 };
 
@@ -88,8 +89,44 @@ const TopNavDesktop = ({ children, Media }) => {
                                         }
                                     >
                                         <Dropdown.Menu style={isDarkMode ? { color: 'white', backgroundColor: 'black', border: '2px solid white' } : { color: 'black', backgroundColor: 'white', border: '2px solid black' }}>
-                                            <Dropdown.Header style={{ display: 'flex', alignItems: 'center' }}><Icon name='user' color={isDarkMode ? 'yellow' : 'teal'}></Icon><p style={{ color: `${isDarkMode ? 'yellow' : 'teal'}` }}>{profileData?.first_name && profileData?.last_name ? `${profileData?.first_name} ${profileData?.last_name}` : 'Anônimo'}</p></Dropdown.Header>
+                                            <Dropdown.Header style={{ display: 'flex', alignItems: 'center' }}>
+                                                <Icon name='user' color={isDarkMode ? 'yellow' : 'teal'}></Icon>
+                                                <p
+                                                    style={{
+                                                        fontSize: `${profileData &&
+                                                            profileData?.first_name &&
+                                                            profileData?.last_name &&
+                                                            profileData.first_name.length + profileData.last_name.length >= 14 &&
+                                                            profileData.first_name.length + profileData.last_name.length < 20
+                                                            ? '9px'
+                                                            : profileData?.first_name && profileData.first_name.length < 14
+                                                                ? '11px'
+                                                                : '10px'
+                                                            }`,
+                                                        color: `${isDarkMode ? 'yellow' : 'teal'}`,
+                                                    }}
+                                                >
+                                                    {profileData?.first_name && profileData?.last_name
+                                                        ? profileData.first_name.length + profileData.last_name.length >= 20
+                                                            ? `${profileData.first_name}`
+                                                            : `${profileData.first_name} ${profileData.last_name}`
+                                                        : 'Anônimo'}
+                                                </p>
+                                            </Dropdown.Header>
                                             <Dropdown.Divider style={{ backgroundColor: `${isDarkMode ? 'white' : 'black'}` }} />
+                                            {
+                                                authenticated && profileData && profileData?.rank === 'admin' &&
+
+                                                < div
+                                                    style={{ cursor: 'pointer', backgroundColor: `${isDarkMode ? 'black' : 'white'}` }}
+                                                    onMouseEnter={isDarkMode ? setDropdownHoverDark : setDropdownHoverLight}
+                                                    onMouseLeave={isDarkMode ? setDropdownDark : setDropdownLight}
+                                                    onClick={() => togglePage('admin')}
+                                                >
+                                                    <Dropdown.Item><p style={{ color: `${isDarkMode ? 'white' : 'black'}` }}>Admin</p></Dropdown.Item>
+                                                </div>
+
+                                            }
                                             {
                                                 authenticated && profileData &&
 

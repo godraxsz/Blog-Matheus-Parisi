@@ -22,6 +22,9 @@
 .env.test.local
 .env.production.local
 
+# temp
+/src/components/pages/blog/segments
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

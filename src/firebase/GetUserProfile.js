@@ -13,7 +13,7 @@ export async function GetUserProfile(user, newsletter, firstName, lastName) {
         const snapshot = await get(profileRef);
 
         if (!snapshot.exists()) {
-            const configData = { newsletter: newsletter ?? null, first_name: firstName ?? null, last_name: lastName ?? null, picture: null, rank: 'Membro', id: uid ?? null, email: email ?? null };
+            const configData = { newsletter: newsletter ?? null, first_name: firstName ?? null, last_name: lastName ?? null, picture: null, rank: 'membro', id: uid ?? null, email: email ?? null };
             await set(profileRef, configData);
             return configData;
         } else {

@@ -10,6 +10,8 @@ import TopNavMobile from './components/navs/topNavMobile';
 // Páginas
 import PageInicio from './components/pages/inicio/pageInicio';
 import PageSobre from './components/pages/sobre/pageSobre';
+import PageBlog from './components/pages/blog/pageBlog';
+import PageAdmin from './components/pages/admin/pageAdmin';
 
 // Util
 import { usePage } from './util/PageToggler';
@@ -54,8 +56,8 @@ const HomepageLayout = () => {
     inicio: <PageInicio />,
     sobre: <PageSobre />,
     //projetos: <PageProjetos />,
-    //blog: <PageBlog />,
-    //login: <PageLogin />,
+    blog: <PageBlog />,
+    admin: <PageAdmin />,
   };
 
   const currentPage = pageComponents[page] || null;
